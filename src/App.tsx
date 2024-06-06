@@ -18,8 +18,20 @@ import './index.css';
 import { CssBaseline, IconButton, ThemeProvider, createTheme } from "@mui/material";
 import { Brightness4Rounded, Brightness7Rounded } from "@mui/icons-material";
 
+export interface PropContextProps {
+    filtered: MovieInfo[];
+    movies: MovieInfo[];
+    onSelect: (id: any) => void;
+    favorites: MovieInfo[];
+    onToggle: (id: any) => void;
+    onClose: () => void;
+    selectedId: number | null;
+    movie: MovieInfo | null;
+    onAddToFavorites: (movie: MovieInfo) => void;
+}
+
 const ColorModeContext = createContext({toggleColorMode: () => {}});
-// const PropContext = createContext(null);
+export const PropContext = createContext<PropContextProps | undefined>(undefined);
 
 const App = () => {
     const [mode, setMode] = useState<'light' | 'dark'>('light');
@@ -83,27 +95,33 @@ const App = () => {
                             </div>
                         </NavBar> 
 
-                        {/* 2. */}
-                        {/* <PropContext.Provider value={{
+                        <PropContext.Provider value={{
+                            filtered: filteredMovies,
+                            movies,
                             onSelect: handleToggleSelectMovie,
-                            onToggle: handleDeleteFromFavorites
-                        }}> */}
-                        <Main selectedId={selectedId}>
+                            favorites,
+                            onToggle: handleDeleteFromFavorites,
+                            onClose: handleCloseMovie,
+                            selectedId,
+                            movie: selectedMovie,
+                            onAddToFavorites: handleAddToFavorites
+                        }}>
+                        <Main>
                             <>
                                 {query && filteredMovies.length > 0 ? (
-                                    <Results filtered={filteredMovies} />
+                                    <Results />
                                 ) : (
                                     <>
                                         <Window text="Popular movies">
-                                            <ListMovie movies={movies} onSelect={handleToggleSelectMovie}/>
+                                            <ListMovie/>
                                         </Window>
 
                                         <Window text="Favorite movies">
-                                            <FavoriteMovies favorites={favorites} onToggle={handleDeleteFromFavorites} >Favorite movies</FavoriteMovies>  
+                                            <FavoriteMovies>Favorite movies</FavoriteMovies>  
                                         </Window>
-                                        <OpenDetail onClose={handleCloseMovie} selectedId={selectedId}>
+                                        <OpenDetail>
                                             <div className={`${mode}-mode`}>
-                                                <MovieDetail onClose={handleCloseMovie} movieList={movies} movie={selectedMovie} selectedId={selectedId} onAddToFavorites={handleAddToFavorites}/>
+                                                <MovieDetail/>
                                             </div>
                                         </OpenDetail>
 
@@ -111,7 +129,7 @@ const App = () => {
                                 )}
                             </>
                         </Main>
-                        {/* </PropContext.Provider> */}
+                        </PropContext.Provider>
                     </ThemeProvider>
             </ColorModeContext.Provider>
         </div>

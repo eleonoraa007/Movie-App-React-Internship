@@ -2,8 +2,6 @@ type WindowProps = {
     children?: JSX.Element | JSX.Element[];
     text: string;
 }
-
-
 const Window = (props: WindowProps) => {
     return (
         <div className="window">

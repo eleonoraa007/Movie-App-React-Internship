@@ -1,8 +1,8 @@
-interface ResultProps {
-  filtered: any;
-}
+import { useContext } from "react";
+import { PropContext, PropContextProps } from "../App";
 
-const Results = ({filtered}: ResultProps) => {
+const Results = () => {
+    const {filtered} = useContext(PropContext) as PropContextProps;
     return (
       <div className="search-result">
         {filtered.map((movie: any) => (

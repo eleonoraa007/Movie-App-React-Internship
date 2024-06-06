@@ -1,20 +1,19 @@
-import MovieInfo from "../interface/MovieInfo";
+import { useContext } from "react";
 import FavoriteMovie from "./FavoriteMovie";
+import { PropContext, PropContextProps } from "../App";
 
 type FavoritesProps = {
-    favorites: MovieInfo[];
-    onToggle: any;
     children?: string | JSX.Element|JSX.Element[];
 }
 
-const FavoriteMovies = (props: FavoritesProps) => {
-
+const FavoriteMovies = ({children}: FavoritesProps) => {
+    const {favorites} = useContext(PropContext) as PropContextProps;
 
     return (
         <ul className="list list-favorite">
             
-            {props.favorites?.map((movie) => (
-                    <FavoriteMovie movie={movie} key={movie.id} onToggle={props.onToggle}/>
+            {favorites?.map((movie) => (
+                    <FavoriteMovie movie={movie} key={movie.id}/>
             ))}
         </ul>
     )

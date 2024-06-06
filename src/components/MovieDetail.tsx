@@ -1,19 +1,15 @@
+import { useContext } from "react";
 import MovieInfo from "../interface/MovieInfo";
+import { PropContext, PropContextProps } from "../App";
 
-type DetailProps = {
-    movie: MovieInfo | null;
-    selectedId: any;
-    onAddToFavorites: any;
-    movieList: MovieInfo[];
-    onClose: any;
-}
-
-const MovieDetail = ({movie, selectedId, onAddToFavorites, movieList, onClose}: DetailProps) => {
+const MovieDetail = () => {
+    const {movie, selectedId, onAddToFavorites, movies, onClose} = useContext(PropContext) as PropContextProps;
     
-    const array = movieList.map((movie) => movie.id).includes(selectedId);
-    const filtered = movieList.filter((movie) => movie.id === selectedId);
+    const array = selectedId !== null && movies.map((movie) => movie.id).includes(selectedId);
+    const filtered = movies.filter((movie) => movie.id === selectedId);
 
     const handleAdd = () => {
+        if(selectedId === null) return;
         const newFavorite: MovieInfo = {
             id: selectedId, 
             poster: movie?.poster || "",

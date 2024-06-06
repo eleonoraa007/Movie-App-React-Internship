@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { PropContext, PropContextProps } from "../App";
+
 type ChildrenProps = {
     children?: JSX.Element|JSX.Element[];
-    selectedId: any;
 }
 
-const Main = ({children, selectedId} : ChildrenProps) => {
+const Main = ({children} : ChildrenProps) => {
+    const {selectedId} = useContext(PropContext) as PropContextProps;
     return (
         <main style={selectedId ? styles.Active : styles.Inactive}>{children}</main>
     );

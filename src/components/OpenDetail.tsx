@@ -1,18 +1,19 @@
+import { useContext } from "react";
 import { createPortal } from "react-dom";
+import { PropContext, PropContextProps } from "../App";
 
 type OpenDetailChildrenProps = {
     children?: JSX.Element | JSX.Element[];
-    onClose: any;
-    selectedId: any;
 }
 
 const OpenDetail = (props: OpenDetailChildrenProps) => {
+    const {onClose, selectedId} = useContext(PropContext) as PropContextProps;
     return createPortal (
 
         <div className="myModal">
             <div className="modal-content">
-                {props.selectedId &&
-                    <button className="btn btn-modal" onClick={props.onClose}>&times;</button>
+                {selectedId &&
+                    <button className="btn btn-modal" onClick={onClose}>&times;</button>
                 }
                 <div>{props.children}</div>
             </div>

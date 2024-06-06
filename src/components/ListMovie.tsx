@@ -1,17 +1,14 @@
-import MovieInfo from '../interface/MovieInfo';
+import { useContext } from 'react';
 import Movie from "./Movie";
+import { PropContext, PropContextProps } from '../App';
 
-type ListProps = {
-    movies: MovieInfo[];
-    onSelect: any;
-}
-
-const ListMovie = (props: ListProps) => {
+const ListMovie = () => {
+    const {movies} = useContext(PropContext) as PropContextProps;
     return (
         <ul className="list list-movies">
-            {props.movies?.map((movie) => (
+            {movies?.map((movie) => (
                 <>
-                <Movie movie={movie} key={movie.id} onSelect={props.onSelect}/>
+                <Movie movie={movie} key={movie.id}/>
                 </>
             ))}
         </ul>
