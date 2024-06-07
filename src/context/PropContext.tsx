@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+import { ChangeEvent, createContext, useState } from "react";
 import MovieInfo from "../interface/MovieInfo";
 import useFetchMovies from "../hooks/useFetchMovies";
 import useStorage from "../hooks/useStorage";
 
 export interface PropContextProps {
+    query: string;
+    onQueryChange: (e: any) => void;
     filtered: MovieInfo[];
     movies: MovieInfo[];
     onSelect: (id: any) => void;
@@ -51,9 +53,14 @@ const PropProvider = ({children}: ChildrenContext) => {
     const handleCloseMovie = () => {
         setSelectedId(null);
     }
+    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+        setQuery(event.target.value);
+    }
 
     return (
         <PropContext.Provider value={{
+            query,
+            onQueryChange: handleSearch,
             filtered: filteredMovies,
             movies,
             onSelect: handleToggleSelectMovie,

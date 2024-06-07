@@ -1,16 +1,16 @@
-type SearchProps = {
-  value: any,
-  onQueryChange: any,
-} 
+import { useContext } from "react";
+import { PropContext, PropContextProps } from "../context/PropContext";
 
-const Search = ({value, onQueryChange}: SearchProps) => {
+const Search = () => {
+  const {query, onQueryChange} = useContext(PropContext) as PropContextProps;
   return (
     <div>
       <input className="search" type="text" placeholder="Search for a movie..."
-      value={value} onChange={onQueryChange} />
+      value={query} onChange={onQueryChange} />
     </div>
   );
 
 }
 export default Search;
+
 

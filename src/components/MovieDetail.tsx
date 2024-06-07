@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MovieInfo from "../interface/MovieInfo";
 import { PropContext, PropContextProps } from "../context/PropContext";
 
@@ -25,6 +25,16 @@ const MovieDetail = () => {
         onAddToFavorites(newFavorite);
         onClose();
     };
+
+    useEffect(() => {
+      const callback = (e: KeyboardEvent) => {
+        if(e.code === "Escape") {  
+            onClose();
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return () => document.addEventListener("keydown", callback);
+    }, [onClose]);
 
     return (
         <>
