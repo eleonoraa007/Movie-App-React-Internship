@@ -1,7 +1,7 @@
-interface CollapseProps {
-    collapsedNumOfWords: any;
-    expanded?: boolean;
-    children?: string;
+type CollapseProps = {
+    collapsedNumOfWords: any,
+    expanded?: boolean,
+    children?: string,
 } 
 
 const TextCollapse = ({collapsedNumOfWords = 10, expanded = false, children}: CollapseProps) => {

@@ -1,6 +1,6 @@
-interface SearchProps {
-  value: any;
-  onQueryChange: any;
+type SearchProps = {
+  value: any,
+  onQueryChange: any,
 } 
 
 const Search = ({value, onQueryChange}: SearchProps) => {

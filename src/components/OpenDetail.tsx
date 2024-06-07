@@ -6,7 +6,7 @@ type OpenDetailChildrenProps = {
     children?: JSX.Element | JSX.Element[];
 }
 
-const OpenDetail = (props: OpenDetailChildrenProps) => {
+const OpenDetail = ({children}: OpenDetailChildrenProps) => {
     const {onClose, selectedId} = useContext(PropContext) as PropContextProps;
     return createPortal (
 
@@ -15,7 +15,7 @@ const OpenDetail = (props: OpenDetailChildrenProps) => {
                 {selectedId &&
                     <button className="btn btn-modal" onClick={onClose}>&times;</button>
                 }
-                <div>{props.children}</div>
+                <div>{children}</div>
             </div>
         </div>, document.body
 
