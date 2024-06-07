@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { createPortal } from "react-dom";
-import { PropContext, PropContextProps } from "../App";
+import { PropContext, PropContextProps } from "../context/PropContext";
 
 type OpenDetailChildrenProps = {
     children?: JSX.Element | JSX.Element[];

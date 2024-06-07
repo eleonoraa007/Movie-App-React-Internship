@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import MovieInfo from "../interface/MovieInfo";
 import MovieOverview from "./MovieOverview";
-import { PropContext, PropContextProps } from "../App";
+import { PropContext, PropContextProps } from "../context/PropContext";
 
 type MovieProps = {
     movie: MovieInfo;
-    // onSelect?: any;
 }
 
 const Movie = ({movie}: MovieProps) => {

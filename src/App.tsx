@@ -7,40 +7,22 @@ import ListMovie from "./components/ListMovie";
 import OpenDetail from "./components/OpenDetail";
 import Window from "./components/Window";
 import Results from "./components/Results";
-import MovieInfo from "./interface/MovieInfo";
-
-import useStorage from "./hooks/useStorage";
-import useFetchMovies from "./hooks/useFetchMovies";
 
 import { ChangeEvent, createContext, useMemo, useState } from "react";
 
 import './index.css';
 import { CssBaseline, IconButton, ThemeProvider, createTheme } from "@mui/material";
 import { Brightness4Rounded, Brightness7Rounded } from "@mui/icons-material";
-
-export interface PropContextProps {
-    filtered: MovieInfo[];
-    movies: MovieInfo[];
-    onSelect: (id: any) => void;
-    favorites: MovieInfo[];
-    onToggle: (id: any) => void;
-    onClose: () => void;
-    selectedId: number | null;
-    movie: MovieInfo | null;
-    onAddToFavorites: (movie: MovieInfo) => void;
-}
+import useFetchMovies from "./hooks/useFetchMovies";
+import PropProvider from "./context/PropContext";
 
 const ColorModeContext = createContext({toggleColorMode: () => {}});
-export const PropContext = createContext<PropContextProps | undefined>(undefined);
 
 const App = () => {
     const [mode, setMode] = useState<'light' | 'dark'>('light');
     const [query, setQuery] = useState("");
-    const [selectedId, setSelectedId] = useState(null);
-    const [favorites, setFavorites] = useStorage();
     const {movies} = useFetchMovies();
 
-    const selectedMovie = movies.find((movie) => movie.id === selectedId) || null;
 
     const filteredMovies = movies.filter(movie => 
         movie.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -65,22 +47,6 @@ const App = () => {
         setQuery(event.target.value);
     }
 
-    const handleAddToFavorites = (movie: MovieInfo) => {
-        setFavorites((favorites) => [...favorites, movie]);
-    }
-
-    const handleDeleteFromFavorites = (id: any) => {
-        setFavorites((favorites) => favorites.filter((movie) => movie.id !== id));
-    }
-
-    const handleToggleSelectMovie = (id: any) => {
-        setSelectedId((selectedId) => (id === selectedId ? null : id));
-    }
-
-    const handleCloseMovie = () => {
-        setSelectedId(null);
-    }
-
     return (
         <div className={`${mode}-mode`}>
             <ColorModeContext.Provider value={colorMode}>
@@ -95,17 +61,7 @@ const App = () => {
                             </div>
                         </NavBar> 
 
-                        <PropContext.Provider value={{
-                            filtered: filteredMovies,
-                            movies,
-                            onSelect: handleToggleSelectMovie,
-                            favorites,
-                            onToggle: handleDeleteFromFavorites,
-                            onClose: handleCloseMovie,
-                            selectedId,
-                            movie: selectedMovie,
-                            onAddToFavorites: handleAddToFavorites
-                        }}>
+                        <PropProvider>
                         <Main>
                             <>
                                 {query && filteredMovies.length > 0 ? (
@@ -129,7 +85,7 @@ const App = () => {
                                 )}
                             </>
                         </Main>
-                        </PropContext.Provider>
+                        </PropProvider>
                     </ThemeProvider>
             </ColorModeContext.Provider>
         </div>

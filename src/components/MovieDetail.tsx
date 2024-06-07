@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import MovieInfo from "../interface/MovieInfo";
-import { PropContext, PropContextProps } from "../App";
+import { PropContext, PropContextProps } from "../context/PropContext";
 
 const MovieDetail = () => {
     const {movie, selectedId, onAddToFavorites, movies, onClose} = useContext(PropContext) as PropContextProps;

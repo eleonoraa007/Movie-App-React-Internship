@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import FavoriteMovie from "./FavoriteMovie";
-import { PropContext, PropContextProps } from "../App";
+import { PropContext, PropContextProps } from "../context/PropContext";
 
 type FavoritesProps = {
     children?: string | JSX.Element|JSX.Element[];

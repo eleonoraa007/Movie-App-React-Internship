@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PropContext, PropContextProps } from "../App";
+import { PropContext, PropContextProps } from "../context/PropContext";
 
 type ChildrenProps = {
     children?: JSX.Element|JSX.Element[];
