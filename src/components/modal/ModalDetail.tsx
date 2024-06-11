@@ -63,7 +63,7 @@ const Role = styled.div`
   font-size: 0.9rem;
 `;
 
-const MovieDetail = () => {
+const ModalDetail = () => {
     const {movie, selectedId, onAddToFavorites, movies, onClose, favorites} = useContext(PropContext) as PropContextProps;
     
     const array = selectedId !== null && movies.map((movie) => movie.id).includes(selectedId);
@@ -159,4 +159,4 @@ const MovieDetail = () => {
         </>
     );
 }
-export default MovieDetail;
+export default ModalDetail;

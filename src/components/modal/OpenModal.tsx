@@ -15,7 +15,7 @@ type OpenDetailChildrenProps = {
     children?: JSX.Element | JSX.Element[];
 }
 
-const OpenDetail = ({children}: OpenDetailChildrenProps) => {
+const OpenModal = ({children}: OpenDetailChildrenProps) => {
     const {onClose, selectedId} = useContext(PropContext) as PropContextProps;
     return createPortal (
 
@@ -30,4 +30,4 @@ const OpenDetail = ({children}: OpenDetailChildrenProps) => {
 
     );
 }
-export default OpenDetail;
+export default OpenModal;

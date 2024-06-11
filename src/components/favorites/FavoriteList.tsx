@@ -1,18 +1,18 @@
 import { useContext } from "react";
-import FavoriteMovie from "./FavoriteMovie";
+import Favorite from "./Favorite";
 import { PropContext, PropContextProps } from "../../context/PropContext";
 
-const FavoriteMovies = () => {
+const FavoriteList = () => {
     const {favorites} = useContext(PropContext) as PropContextProps;
 
     return (
         <ul className="list list-favorite">
             
             {favorites?.map((movie) => (
-                    <FavoriteMovie movie={movie} key={movie.id}/>
+                    <Favorite movie={movie} key={movie.id}/>
             ))}
         </ul>
     )
     
 }
-export default FavoriteMovies;
+export default FavoriteList;

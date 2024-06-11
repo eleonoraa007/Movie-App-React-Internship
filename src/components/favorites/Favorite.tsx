@@ -16,7 +16,7 @@ type FavoriteProps = {
     movie: MovieInfo;
 } 
 
-const FavoriteMovie = ({movie}: FavoriteProps) => {
+const Favorite = ({movie}: FavoriteProps) => {
     const {onToggle} = useContext(PropContext) as PropContextProps;
 
     return (
@@ -26,4 +26,4 @@ const FavoriteMovie = ({movie}: FavoriteProps) => {
         </ContainerStyle>
     )
 } 
-export default FavoriteMovie;
+export default Favorite;

@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { PropContext, PropContextProps } from "../context/PropContext";
 import Results from "./search/Results";
 import Window from "./shared/Window";
-import ListMovie from "./moviesList/ListMovie";
-import FavoriteMovies from "./favorites/FavoriteMovies";
-import OpenDetail from "./modal/OpenDetail";
-import MovieDetail from "./modal/MovieDetail";
+import MovieList from "./movies/MovieList";
+import FavoriteList from "./favorites/FavoriteList";
+import OpenModal from "./modal/OpenModal";
+import ModalDetail from "./modal/ModalDetail";
 import { ColorModeContext } from "../App";
 
 const Content = () => {
@@ -18,18 +18,18 @@ const Content = () => {
             ) : ( 
                 <>
                     <Window text="Popular movies">
-                        <ListMovie/>
+                        <MovieList/>
                     </Window>
 
                     <Window text="Favorite movies">
-                        <FavoriteMovies />
+                        <FavoriteList />
                     </Window>
                                         
-                    <OpenDetail>
+                    <OpenModal>
                         <div className={`${mode}-mode`}>
-                            <MovieDetail/>
+                            <ModalDetail/>
                         </div>
-                    </OpenDetail>
+                    </OpenModal>
 
                 </>
             )}

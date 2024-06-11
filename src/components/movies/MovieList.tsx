@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Movie from "./Movie";
 import { PropContext, PropContextProps } from "../../context/PropContext";
 
-const ListMovie = () => {
+const MovieList = () => {
     const {movies} = useContext(PropContext) as PropContextProps;
     return (
         <ul>
@@ -14,4 +14,4 @@ const ListMovie = () => {
         </ul>
     )
 }
-export default ListMovie;
+export default MovieList;
