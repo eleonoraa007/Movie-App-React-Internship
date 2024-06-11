@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import FavoriteMovie from "./FavoriteMovie";
-import { PropContext, PropContextProps } from "../context/PropContext";
+import { PropContext, PropContextProps } from "../../context/PropContext";
 
 const FavoriteMovies = () => {
     const {favorites} = useContext(PropContext) as PropContextProps;

@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { PropContext, PropContextProps } from "../context/PropContext";
-import Results from "./Results";
-import Window from "./Window";
-import ListMovie from "./ListMovie";
-import FavoriteMovies from "./FavoriteMovies";
-import OpenDetail from "./OpenDetail";
-import MovieDetail from "./MovieDetail";
+import Results from "./search/Results";
+import Window from "./shared/Window";
+import ListMovie from "./moviesList/ListMovie";
+import FavoriteMovies from "./favorites/FavoriteMovies";
+import OpenDetail from "./modal/OpenDetail";
+import MovieDetail from "./modal/MovieDetail";
 import { ColorModeContext } from "../App";
 
 const Content = () => {
