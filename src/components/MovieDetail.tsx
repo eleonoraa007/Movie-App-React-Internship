@@ -3,10 +3,12 @@ import MovieInfo from "../interface/MovieInfo";
 import { PropContext, PropContextProps } from "../context/PropContext";
 
 const MovieDetail = () => {
-    const {movie, selectedId, onAddToFavorites, movies, onClose} = useContext(PropContext) as PropContextProps;
+    const {movie, selectedId, onAddToFavorites, movies, onClose, favorites} = useContext(PropContext) as PropContextProps;
     
     const array = selectedId !== null && movies.map((movie) => movie.id).includes(selectedId);
     const filtered = movies.filter((movie) => movie.id === selectedId);
+
+    const inFavorites = selectedId !== null && favorites.map((movie) => movie.id).includes(selectedId);
 
     const handleAdd = () => {
         if(selectedId === null) return;
@@ -86,7 +88,9 @@ const MovieDetail = () => {
                                 </div>
                             </div>        
                         </div>
+                        {!inFavorites ?
                         <button className="btn btn-movie" onClick={handleAdd}>Add movie to favorites</button>
+                        : <></>}
                     </div>
             )})) : (
                 ""

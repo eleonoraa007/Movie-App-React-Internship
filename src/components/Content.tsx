@@ -22,7 +22,7 @@ const Content = () => {
                     </Window>
 
                     <Window text="Favorite movies">
-                        <FavoriteMovies>Favorite movies</FavoriteMovies>  
+                        <FavoriteMovies />
                     </Window>
                                         
                     <OpenDetail>

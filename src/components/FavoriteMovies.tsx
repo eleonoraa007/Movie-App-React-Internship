@@ -2,11 +2,7 @@ import { useContext } from "react";
 import FavoriteMovie from "./FavoriteMovie";
 import { PropContext, PropContextProps } from "../context/PropContext";
 
-type FavoritesProps = {
-    children?: string | JSX.Element|JSX.Element[];
-}
-
-const FavoriteMovies = ({children}: FavoritesProps) => {
+const FavoriteMovies = () => {
     const {favorites} = useContext(PropContext) as PropContextProps;
 
     return (
